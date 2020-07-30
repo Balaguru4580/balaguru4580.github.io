@@ -488,11 +488,6 @@ let BoardComponent = class BoardComponent {
             this.xIsNext = !this.xIsNext;
         }
         this.winner = this.calculateWinner();
-        if (this.winner != null) {
-            var time = 5000;
-            setTimeout(() => { this.newGame(); }, time);
-        }
-        3;
     }
     calculateWinner() {
         this.count++;
