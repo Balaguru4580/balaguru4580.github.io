@@ -83,7 +83,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<h1>Current Player: {{ player }} </h1>\r\n\r\n<div class =\"wrapper\">\r\n    <button class =\"button\" nbButton outline status=\"danger\" (click) =\"newGame()\">Start new Game</button>\r\n</div>\r\n\r\n<h2 *ngIf=\"(winner) && (winner != 'draw'); else draw;\">\r\n    Player {{ winner }} won the game!\r\n</h2>   \r\n\r\n<ng-template #draw >\r\n<h2 *ngIf=\"(winner=='draw')\">\r\n    It's a draw!\r\n</h2>\r\n\r\n<main>\r\n        <app-square \r\n            *ngFor=\"let val of squares; let i = index\" \r\n            [value]=\"val\"\r\n            (click)=\"makeMove(i)\"> \r\n\r\n        </app-square>\r\n</main>\r\n\r\n\r\n\r\n";
+    __webpack_exports__["default"] = "<h1>Current Player: {{ player }}</h1>\r\n\r\n<div class =\"wrapper\">\r\n    <button class =\"button\" nbButton outline status=\"danger\" (click) =\"newGame()\">Start new Game</button>\r\n</div>  \r\n\r\n<h2 *ngIf=\"(winner) && (winner != 'draw'); else draw;\">\r\n        Player {{ winner }} won the game!\r\n</h2>   \r\n\r\n<ng-template #draw >\r\n    <h2 *ngIf=\"(winner=='draw')\">\r\n        It's a draw!\r\n    </h2>\r\n</ng-template>\r\n\r\n<main>\r\n    \r\n        <app-square \r\n            *ngFor=\"let val of squares; let i = index\" \r\n            [value]=\"val\"\r\n            (click)=\"makeMove(i)\"> \r\n\r\n        </app-square>\r\n</main>\r\n\r\n\r\n\r\n";
     /***/
   },
 
@@ -797,7 +797,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var AppComponent = function AppComponent() {
       _classCallCheck(this, AppComponent);
 
-      this.title = 'BR TicTacToe';
+      this.title = 'myapp';
     };
 
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -999,12 +999,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "makeMove",
         value: function makeMove(idx) {
+          var _this = this;
+
           if (!this.squares[idx]) {
             this.squares.splice(idx, 1, this.player);
             this.xIsNext = !this.xIsNext;
           }
 
           this.winner = this.calculateWinner();
+
+          if (this.winner != null) {
+            var time = 5000;
+            setTimeout(function () {
+              _this.newGame();
+            }, time);
+          }
+
+          3;
         }
       }, {
         key: "calculateWinner",
